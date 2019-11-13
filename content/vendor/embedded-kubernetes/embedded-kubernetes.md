@@ -6,7 +6,7 @@ description: "A Kots application can be deployed to an existing cluster or the i
 weight: 20090
 ---
 
-A Kots application can be deployed to an existing cluster or the installer can provision a new cluster with the application.
+A KOTS application can be deployed to an existing cluster or the installer can provision a new cluster with the application.
 
 To create an installer, visit the "Kubernetes Installer" link in the [Vendor Portal](https://vendor.replicated.com). From here, you can create a YAML document that describes the version of Kubernetes and the components that you'd like to include in your installer.
 
@@ -32,15 +32,15 @@ spec:
 
 ## Add Ons
 
-The installer can support various addons. Removing an add on from the spec will remove it from your installer. For a full list of supported add ons, see the [reference documentation](/reference/kubernetes-installers/kurl/).
+The installer supports various add-ons. Removing an add-on from the spec will remove the application from being included in your installer. For a full list of supported add-ons, see the [reference documentation](/reference/kubernetes-installers/kurl/).
 
-## Versions
+## Add-On Versions
 
-For add ons that are using `version: "latest"` this will be pinned to the latest version of the component that is supported by our installer. This means that when an update to the component is shipped, your installer will automatically be updated. This may be desirable in some scenarios, while other installers may want to have tested, locked and predictable installed versions. You can also list a specific (supported) version of an add on and it will be locked to that version.
+Add-ons that are using `version: "latest"` will be pinned to the latest version of the component that is supported by the installer. This means that when an update to the component is shipped, the installer will automatically be updated. This may be desirable in some scenarios, while other installers may want to have tested, reproducible and predictable installed versions. To support this use case, the YAML specification allows for specifying an exact version instead of using "latest".
 
 ## Advanced Options
 
-In addition to the standard YAML, you can provide advanced options that will be used as defaults for your installation script.
+In addition to the standard YAML, many add-ons offer optional, advanced options that will be used as defaults during installation.
 
 ```yaml
 apiVersion: kurl.sh/v1beta1
@@ -61,9 +61,11 @@ spec:
     version: "latest"
 ```
 
-Most add ons support some advanced options. For a full list of these supported options, see the [reference documentation](/reference/kubernetes-installers/kurl/).
+Most add-ons support some advanced options. For a full list of these supported options, see the [reference documentation](/reference/kubernetes-installers/kurl/).
 
 ## Operating Systems
+
+The installer will support the following operating systems:
 
 * Ubuntu 18.04
 * Ubuntu 16.04
